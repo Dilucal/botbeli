@@ -1,0 +1,45 @@
+else if (command === prefix + 'toimg') {
+            if (isQuotedSticker) {
+                await downloadAndSaveMediaMessage('sticker', `./temp/sticker/${sender}.webp`)
+                if (msg.message.extendedTextMessage.contextInfo.quotedMessage.stickerMessage.isAnimated === true) {
+                    reply(mess.wait)
+                    var outGif = getRandom('.gif')
+                    var outMp4 = getRandom('.mp4')
+                    exec(`convert ./temp/sticker/${sender}.webp ${outGif}`, (err) => {
+                        if (err) {
+                            console.log(err)
+                            fs.unlinkSync(`./temp/sticker/${sender}.webp`)
+                            return reply(`Error bruh`)
+                        }
+                        exec(`ffmpeg -i ${outGif} -vf "crop=trunc(iw/2)*2:trunc(ih/2)*2" -b:v 0 -crf 25 -f mp4 -vcodec libx264 -pix_fmt yuv420p ${outMp4}`, (err) => {
+                            if (err) {
+                                console.log(err)
+                                fs.unlinkSync(`./temp/sticker/${sender}.webp`)
+                                fs.unlinkSync(outGif)
+                                return reply(`Error`)
+                            }
+                            conn.sendMessage(from, { video: { url: outMp4 }, caption: 'Done ~'}, {
+                                quoted: msg,
+                            }).then(() => {
+                                fs.unlinkSync(outMp4)
+                                fs.unlinkSync(`./temp/sticker/${sender}.webp`)
+                                fs.unlinkSync(outGif)
+                            })
+                        })
+                    })
+                } else {
+                    reply(mess.wait)
+                    var ran = getRandom('.png')
+                    exec(`ffmpeg -i ./temp/sticker/${sender}.webp ${ran}`, async (err) => {
+                        fs.unlinkSync(`./temp/sticker/${sender}.webp`)
+                        if (err) return reply(mess.error)
+                        await conn.sendMessage(from, { image: { url: ran }, caption: 'Done ~'}, {
+                            quoted: msg,
+                        })
+                        await fs.unlinkSync(ran)
+                    })
+                }
+            } else {
+                reply('Reply sticker..')
+            }
+        }

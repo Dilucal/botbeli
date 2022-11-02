@@ -1,0 +1,20 @@
+{
+    "ownerNumber": "6287823406145", 
+    "ownerName": "Armnd_", 
+    "botName": "NuxL",
+    "footer": "© NuxL Bot | 2022", 
+    "sessionName": "session", 
+    "pathimg": "./media/logo.jpg", 
+    "pathqris": "./media/qris.jpg",
+    "group": "https://chat.whatsapp.com/CmJkktfVp0H2Gl4v11VOLW",
+    "yootube": "https://chat.whatsapp.com/CmJkktfVp0H2Gl4v11VOLW",
+    "igCookie": "https://chat.whatsapp.com/CmJkktfVp0H2Gl4v11VOLW",
+ 
+    "limitCount": 100,
+    "limitGame": 35,
+    "gamewaktu": 60,
+    "sticker": {
+        "packname": "© Qynzuu",
+        "author": "@Armand__"
+    }
+}
