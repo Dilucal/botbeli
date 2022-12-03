@@ -2,13 +2,13 @@
 "name": "NEOBOTV9",
 "version": "1.0.0",
 "description": "Bot WhatsApp Baileys Multi Device.",
-"main": "node index.js",
+"main": "main.js",
 "directories": {
 "lib": "lib"
 },
 "scripts": {
 "test": "echo \"Error: no test specified\" && exit 1",
-"start": "node index.js"
+"start": "node main.js"
 },
 "author": "Lexxy Official",
 "license": "MIT",
